@@ -19,8 +19,11 @@ export abstract class MaskedInputComponent implements OnInit,OnDestroy {
 
   constructor() { }
   _internalPipeValue(event){
-    console.log(event);
-    const [ _newValue,_error ] = this.filter(this.inputview.nativeElement.value);
+    const value=event.target.value;
+    const curLeft=value.substr(0,event.target.selectionStart);
+    const curRight=value.substr(event.target.selectionStart);
+    console.log(event,event.target.selectionStart);
+    const [ _newValue,_error ] = this.filter(event.target.value);
     console.log(_newValue)
     this.outputview.nativeElement.innerHTML = _newValue;
     this.value.emit(_newValue);
