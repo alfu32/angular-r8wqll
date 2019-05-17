@@ -24,6 +24,21 @@ $dimHeight: 24px;
     left: 0px;
     bottom: 0px;
     right: 0px;
+    /*font-size: 18px;
+    font-family: monospace;*/
+}
+%nativeInput{
+    text-rendering: auto;
+    color: initial;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+    margin: 0em;
+    font: 400 13.3333px Arial;
 }
 
 .masked-input{
@@ -43,9 +58,12 @@ $dimHeight: 24px;
   }
   .in{
     @extend %position;
-    opacity:0.01;
+    //opacity:0.01;
+    color:#00000000;
+    background:#00000000;
   }
   .out{
     @extend %position;
+    @extend %nativeInput;
   }
 }

@@ -1,5 +1,11 @@
 import { Component } from '@angular/core';
 
+function numberWithCommas(x) {
+    var parts = x.toString().split(".");
+    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return parts.join(".");
+}
+
 @Component({
   selector: 'my-app',
   templateUrl: './app.component.html',
@@ -8,6 +14,7 @@ import { Component } from '@angular/core';
 export class AppComponent  {
   name = 'Angular';
   maskedInputFilter(val){
+    return [numberWithCommas(val),null];
     const ruleNumericalOnly=/\d|\./gi;
     const ruleSinglePoint=/\.{0,1}/;
     const checkNumerical=val.match(ruleNumericalOnly).join('');
