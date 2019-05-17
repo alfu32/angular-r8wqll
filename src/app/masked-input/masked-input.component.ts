@@ -7,23 +7,23 @@ import { Component, OnInit, OnDestroy, Input,ViewChild,ElementRef } from '@angul
 })
 export class MaskedInputComponent implements OnInit,OnDestroy {
   @Input('masked-input-filter') filter;
-  @ViewChild('outView') _outView: ElementRef;
-  @ViewChild('inElement') _inView: ElementRef;
+  @ViewChild('outputview') outputview: ElementRef;
+  @ViewChild('inputview') inputview: ElementRef;
   constructor() { }
   _internalPipeValue(event){
-    const _newValue = this.filter(this._inView.nativeElement.value);
-    console.log(_newValue);
-    this._outView.nativeElement.innerHTML = _newValue;
+    const _newValue = this.filter(this.inputview.nativeElement.value);
+    console.log(_newValue)
+    this.outputview.nativeElement.innerHTML = _newValue;
   }
 
   ngOnInit() {
     console.log(this.filter);
-    console.log(this._inView.nativeElement);
-    console.log(this._outView.nativeElement);
-    this._inView.nativeElement.addEventListener("change",this._internalPipeValue);
+    console.log(this.inputview.nativeElement);
+    console.log(this.inputview.nativeElement);
+    this.inputview.nativeElement.addEventListener("change",this._internalPipeValue);
   }
   ngOnDestroy(){
-    this._inView.nativeElement.removeEventListener("change",this._internalPipeValue);
+    this.inputview.nativeElement.removeEventListener("change",this._internalPipeValue);
   }
 
 }

@@ -1,5 +1,5 @@
 <div class="masked-input">
   <div class="dim"></div>
-  <div class="out" #refOut></div>
-  <input class="in" #refIn/>
+  <div class="out" #outputview></div>
+  <input class="in"  #inputview (keyup)="_internalPipeValue($event)"/>
 </div>

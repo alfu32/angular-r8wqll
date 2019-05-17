@@ -1,7 +1,7 @@
-$radius: 2px;
+
 $dimTop: 0px;
-$dimLeft: 0px + $radius;
-$dimWidth: 180px - 2 * $radius;
+$dimLeft: 0px;
+$dimWidth: 180px;
 $dimHeight: 24px;
 
 %reset{
@@ -9,22 +9,27 @@ $dimHeight: 24px;
     border:0;
     padding:0;
     outline: 0;
+    min-width: unset;
+    min-height: unset;
+    max-width: unset;
+    max-height: unset;
+    width: unset;
+    height: unset;
 }
 
 %position{
     @extend %reset;
     position: absolute;
     top: 0px;
-    left: $radius;
+    left: 0px;
     bottom: 0px;
-    right: $radius;
+    right: 0px;
 }
 
 .masked-input{
   position:relative;
   display:inline-block;
   vertical-align: top;
-  border-radius: $radius;
   border:1px solid #AAA;
   @extend %reset;
   .dim{
@@ -33,12 +38,12 @@ $dimHeight: 24px;
     min-height: $dimHeight;
     max-width: $dimWidth;
     max-height: $dimHeight;
-    max-width: $dimWidth;
-    max-height: $dimHeight;
+    width: $dimWidth;
+    height: $dimHeight;
   }
   .in{
     @extend %position;
-    opacity:0.5;
+    opacity:0.01;
   }
   .out{
     @extend %position;
