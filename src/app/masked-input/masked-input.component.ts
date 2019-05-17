@@ -6,8 +6,8 @@ import { Component, OnInit, OnDestroy,EventEmitter, Input,Output,ViewChild,Eleme
   styleUrls: ['./masked-input.component.scss']
 })
 export abstract class MaskedInputComponent implements OnInit,OnDestroy {
-  @Output() value:EventEmitter<any> = new EventEmitter();
-  @Output() error:EventEmitter<any> = new EventEmitter();
+  @Output('onValue') value:EventEmitter<any> = new EventEmitter();
+  @Output('onError') error:EventEmitter<any> = new EventEmitter();
 
   @ViewChild('outputview') outputview: ElementRef;
   @ViewChild('inputview') inputview: ElementRef;
