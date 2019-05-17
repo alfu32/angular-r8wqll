@@ -4,7 +4,7 @@
   <input type="text" pattern="[1-4]{5}" />
   <app-masked-input 
     [masked-input-filter]="maskedInputFilter"
-    (onValue)="maskedInputValue(event)"
-    (onError)="maskedInputError(event)"
+    (onValue)="maskedInputValue($event)"
+    (onError)="maskedInputError($event)"
   ></app-masked-input>
 </p>

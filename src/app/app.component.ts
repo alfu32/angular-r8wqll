@@ -23,4 +23,10 @@ export class AppComponent  {
     const new_integral=integral.split('').reverse().join('').match(/(\d|\.){1,3}/g).join(',').split('').reverse().join('')
     return new_integral+(decimal!==undefined?'.'+decimal:'');
   }
+  maskedInputValue(event){
+    console.log("maskedInputValue",event)
+  }
+  maskedInputError(event){
+    console.log("maskedInputError",event)
+  }
 }
