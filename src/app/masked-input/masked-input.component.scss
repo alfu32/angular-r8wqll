@@ -1,0 +1,46 @@
+$radius: 2px;
+$dimTop: 0px;
+$dimLeft: 0px + $radius;
+$dimWidth: 180px - 2 * $radius;
+$dimHeight: 24px;
+
+%reset{
+    margin:0;
+    border:0;
+    padding:0;
+    outline: 0;
+}
+
+%position{
+    @extend %reset;
+    position: absolute;
+    top: 0px;
+    left: $radius;
+    bottom: 0px;
+    right: $radius;
+}
+
+.masked-input{
+  position:relative;
+  display:inline-block;
+  vertical-align: top;
+  border-radius: $radius;
+  border:1px solid #AAA;
+  @extend %reset;
+  .dim{
+    @extend %reset;
+    min-width: $dimWidth;
+    min-height: $dimHeight;
+    max-width: $dimWidth;
+    max-height: $dimHeight;
+    max-width: $dimWidth;
+    max-height: $dimHeight;
+  }
+  .in{
+    @extend %position;
+    opacity:0.5;
+  }
+  .out{
+    @extend %position;
+  }
+}
