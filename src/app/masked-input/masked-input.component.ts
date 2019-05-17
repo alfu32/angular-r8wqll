@@ -11,7 +11,9 @@ export class MaskedInputComponent implements OnInit,OnDestroy {
   @ViewChild('inElement') _inView: ElementRef;
   constructor() { }
   _internalPipeValue(event){
-    this._outView.nativeElement.innerHTML = this.filter(this._inView.nativeElement.value);
+    const _newValue = this.filter(this._inView.nativeElement.value);
+    console.log(_newValue);
+    this._outView.nativeElement.innerHTML = _newValue;
   }
 
   ngOnInit() {
