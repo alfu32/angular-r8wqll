@@ -14,7 +14,7 @@ function numberWithCommas(x) {
 export class AppComponent  {
   name = 'Angular';
   maskedInputFilter(val){
-    return [numberWithCommas(val),null];
+    return [numberWithCommas(val).split(''),null];
     const ruleNumericalOnly=/\d|\./gi;
     const ruleSinglePoint=/\.{0,1}/;
     const checkNumerical=val.match(ruleNumericalOnly).join('');

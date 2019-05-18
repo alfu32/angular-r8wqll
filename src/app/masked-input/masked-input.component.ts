@@ -23,9 +23,11 @@ export abstract class MaskedInputComponent implements OnInit,OnDestroy {
     const curLeft=value.substr(0,event.target.selectionStart);
     const curRight=value.substr(event.target.selectionStart);
     console.log(event,event.target.selectionStart,curLeft,curRight);
+
     const [ _newValue,_error ] = this.filter(event.target.value);
-    console.log(_newValue)
-    this.outputview.nativeElement.innerHTML = _newValue;
+
+    console.log(_newValue.map(v => `<div>${v}</div>`))
+    this.outputview.nativeElement.innerHTML = _newValue.map(v => `<div>${v}</div>`);
     this.value.emit(_newValue);
     if(_error)this.error.emit(_error);
   }
