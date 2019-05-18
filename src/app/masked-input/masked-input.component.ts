@@ -29,7 +29,7 @@ export abstract class MaskedInputComponent implements OnInit,OnDestroy {
     console.log(viewValue);
     let j=0;
     const indexOfCursor=_newValue.reduce( (a,v,i) => {
-      a[i]={posInput:j,posOutput:i,valueInput:v!==','?null:v,valueOutput:v}
+      a[i]={posInput:j,posOutput:i,valueInput:v===','?null:v,valueOutput:v}
       if(v!==',')j++;
       return a;
     },{});
