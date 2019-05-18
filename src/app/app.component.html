@@ -1,14 +1,14 @@
 <hello name="{{ name }}"></hello>
-<p>
+<div>
   Start editing to see some magic happen :)
   <input type="text" pattern="[1-4]{5}" />
   <div>
-    better use <a href="https://eui.ecdevops.eu/screen/app/app-style-guide/pipes/ux-number-format"><pre>ux-number-format</pre></a>
-
+    better use <a href="https://eui.ecdevops.eu/screen/app/app-style-guide/pipes/ux-number-format"><div>ux-number-format</div></a>
   </div>
+
   <app-masked-input 
     [masked-input-filter]="maskedInputFilter"
     (onValue)="maskedInputValue($event)"
     (onError)="maskedInputError($event)"
   ></app-masked-input>
-</p>
+</div>

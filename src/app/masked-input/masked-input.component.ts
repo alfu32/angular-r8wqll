@@ -25,9 +25,16 @@ export abstract class MaskedInputComponent implements OnInit,OnDestroy {
     console.log(event,event.target.selectionStart,curLeft,curRight);
 
     const [ _newValue,_error ] = this.filter(event.target.value);
-
-    console.log(_newValue.map(v => `<span class=${v==','?'comma':'number'}>${v}</span>`))
-    this.outputview.nativeElement.innerHTML = _newValue.map(v => `<span class=${v==','?'comma':'number'}>${v}</span>`).join('');
+    const viewValue = _newValue.map(v => `<span class=${v==','?'comma':'number'}>${v}</span>`);
+    console.log(viewValue);
+    let j=0;
+    const indexOfCursor=_newValue.reduce( (a,v,i) => {
+      a[i]={posInput:j,posOutput:i,valueInput:v!==','?null:v,valueOutput:v}
+      if(v!==',')j++;
+      return a;
+    },{});
+    console.log(viewValue,indexOfCursor);
+    this.outputview.nativeElement.innerHTML = viewValue.join('');
     this.value.emit(_newValue);
     if(_error)this.error.emit(_error);
   }
