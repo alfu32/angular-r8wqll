@@ -26,7 +26,7 @@ export abstract class MaskedInputComponent implements OnInit,OnDestroy {
 
     const [ _newValue,_error ] = this.filter(event.target.value);
 
-    console.log(_newValue.map(v => `<span>${v}</span>`))
+    console.log(_newValue.map(v => `<span class=${v==','?'comma':'number'}>${v}</span>`))
     this.outputview.nativeElement.innerHTML = _newValue.map(v => `<span>${v}</span>`);
     this.value.emit(_newValue);
     if(_error)this.error.emit(_error);
