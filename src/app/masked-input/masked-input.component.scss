@@ -47,6 +47,15 @@ $dimHeight: 24px;
   vertical-align: top;
   border:1px solid #AAA;
   @extend %reset;
+  .cursor{
+    position:absolute;
+    min-width: 1px;
+    max-width: 1px;
+    min-height: 10px;
+    max-height: 10px;
+    box-sizing: border-box;
+    border:1px solid #333;
+  }
   .dim{
     @extend %reset;
     min-width: $dimWidth;
