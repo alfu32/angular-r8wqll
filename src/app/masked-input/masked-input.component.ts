@@ -37,13 +37,17 @@ export abstract class MaskedInputComponent implements OnInit,OnDestroy {
     console.log(this._json())
     return model.substr(0,pos) === view.substr(0,pos).replace(/,/gi,"")
   }
+  getCursorModelPos(){
+    const value=event.target.value;
+    this.modelCursorPosition = event.target.selectionStart;
+  }
   _internalPipeValue(event){
     const value=event.target.value;
     this.modelCursorPosition = event.target.selectionStart;
 
     const [ _newValue,_error ] = this.filter(event.target.value);
     this.viewValue = _newValue.map(v => `${v}`).join('');
-
+    this.
     let j=0;
     this.viewCursorPosition=_newValue.reduce( (a,v,i) => {
       if(this.check(value,this.viewValue,this.modelCursorPosition))a++;
@@ -56,6 +60,7 @@ export abstract class MaskedInputComponent implements OnInit,OnDestroy {
     this.value.emit(_newValue);
     if(_error)this.error.emit(_error);
     console.log(this._json())
+    setTimeout( ()=>event.target.focus(),600);
   }
 
   ngOnInit() {
