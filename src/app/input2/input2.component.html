@@ -1,0 +1,13 @@
+<div class="input2">
+  <div class="input" #outputview contenteditable="true"
+    (keyup)="inputKeyUp($event)"
+    (click)="inputClick($event)"
+    (selectionStart)="inputSelectionStart($event)"></div>
+  <div class="output" #inputview></div>
+  <pre>
+    instring  : {{instring}}
+    outstring : {{outstring}}
+    inStrpos  : {{inStrpos}}
+    outStrpos : {{outStrpos}}
+  </pre>
+</div>

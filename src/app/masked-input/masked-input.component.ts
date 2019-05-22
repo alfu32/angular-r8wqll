@@ -47,7 +47,7 @@ export abstract class MaskedInputComponent implements OnInit,OnDestroy {
 
     const [ _newValue,_error ] = this.filter(event.target.value);
     this.viewValue = _newValue.map(v => `${v}`).join('');
-    this.
+    
     let j=0;
     this.viewCursorPosition=_newValue.reduce( (a,v,i) => {
       if(this.check(value,this.viewValue,this.modelCursorPosition))a++;
