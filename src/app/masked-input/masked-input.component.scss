@@ -2,7 +2,7 @@
 $dimTop: 0px;
 $dimLeft: 0px;
 $dimWidth: 180px;
-$dimHeight: 24px;
+$dimHeight: 48px;
 
 %reset{
     margin:0;
@@ -19,12 +19,12 @@ $dimHeight: 24px;
 }
 
 %position{
-    @extend %reset;
+    //@extend %reset;
     position: absolute;
     top: 0px;
     left: 0px;
-    bottom: 0px;
-    right: 0px;
+    //bottom: 0px;
+    ///right: 0px;
     /*font-size: 18px;
     font-family: monospace;*/
 }
@@ -48,17 +48,6 @@ $dimHeight: 24px;
   vertical-align: top;
   border:1px solid #AAA;
   @extend %reset;
-  .cursor{
-    @extend %reset;
-    position:absolute;
-    min-width: 1px;
-    max-width: 1px;
-    min-height: 10px;
-    max-height: 10px;
-    border:1px solid #333;
-    top:0px;
-    
-  }
   .dim{
     @extend %reset;
     min-width: $dimWidth;
@@ -71,11 +60,11 @@ $dimHeight: 24px;
   .in{
     @extend %position;
     //opacity:0.01;
-    color:#00000000;
-    background:#00000000;
+    //color:#00000077;
+    //background:#00000000;
   }
   .out{
     @extend %position;
-    @extend %nativeInput;
+    top:27px;
   }
 }

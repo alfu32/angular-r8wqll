@@ -1,6 +1,9 @@
 <div class="masked-input">
   <div class="dim"></div>
-  <div class="cursor"></div>
-  <div class="out" #outputview></div>
-  <input class="in"  #inputview (keyup)="_internalPipeValue($event)"/>
+  <input class="out" #outputview>
+  <input class="in"  #inputview
+    (keyup)="_internalPipeValue($event)"
+    (click)="_positionCursor($event)"
+  />
+  <!--pre>{{_json()}}</pre-->
 </div>

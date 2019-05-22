@@ -16,27 +16,46 @@ export abstract class MaskedInputComponent implements OnInit,OnDestroy {
   
   public abstract initRuleSet(rules);
   public abstract filterFunction(val:string):string;
-
+  public viewValue="";
+  public modelValue="";
+  public viewCursorPosition=0;
+  public modelCursorPosition=0;
   constructor() { }
+  _json(){
+    return {
+      viewValue : this.viewValue,
+      modelValue : this.modelValue,
+      viewCursorPosition : this.viewCursorPosition,
+      modelCursorPosition : this.modelCursorPosition,
+    };
+  }
+  _positionCursor(event){
+    const value=event.target.value;
+    this.modelCursorPosition = event.target.selectionStart;
+  }
+  check(model,view,pos){
+    console.log(this._json())
+    return model.substr(0,pos) === view.substr(0,pos).replace(/,/gi,"")
+  }
   _internalPipeValue(event){
     const value=event.target.value;
-    const curLeft=value.substr(0,event.target.selectionStart);
-    const curRight=value.substr(event.target.selectionStart);
-    console.log(event,event.target.selectionStart,curLeft,curRight);
+    this.modelCursorPosition = event.target.selectionStart;
 
     const [ _newValue,_error ] = this.filter(event.target.value);
-    const viewValue = _newValue.map(v => `<span class=${v==','?'comma':'number'}>${v}</span>`);
-    console.log(viewValue);
+    this.viewValue = _newValue.map(v => `${v}`).join('');
+
     let j=0;
-    const indexOfCursor=_newValue.reduce( (a,v,i) => {
-      a[i]={posInput:j,posOutput:i,valueInput:v===','?null:v,valueOutput:v}
-      if(v!==',')j++;
+    this.viewCursorPosition=_newValue.reduce( (a,v,i) => {
+      if(this.check(value,this.viewValue,this.modelCursorPosition))a++;
       return a;
-    },{});
-    console.log(viewValue,indexOfCursor);
-    this.outputview.nativeElement.innerHTML = viewValue.join('');
+    },0);
+
+    this.outputview.nativeElement.value = this.viewValue;
+    this.outputview.nativeElement.focus();
+    this.outputview.nativeElement.setSelectionRange(this.viewCursorPosition, this.viewCursorPosition);
     this.value.emit(_newValue);
     if(_error)this.error.emit(_error);
+    console.log(this._json())
   }
 
   ngOnInit() {
