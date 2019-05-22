@@ -1,13 +1,19 @@
 <div class="input2">
-  <div class="input" #outputview contenteditable="true"
+  <!--div class="input" #outputview contenteditable="true"
     (keyup)="inputKeyUp($event)"
     (click)="inputClick($event)"
-    (selectionStart)="inputSelectionStart($event)"></div>
-  <div class="output" #inputview></div>
+    (selectionStart)="inputSelectionStart($event)"></div-->
+  <textarea class="input" #inputview contenteditable="true"
+    (keyup)="inputKeyUp($event)"
+    (click)="inputClick($event)"
+    (paste)="inputSelectionStart($event)"></textarea>
+  <div class="output" #outputview></div>
+  <div class="cursor" #cursorview></div>
   <pre>
     instring  : {{instring}}
-    outstring : {{outstring}}
     inStrpos  : {{inStrpos}}
+    --------------------------------------
+    outstring : {{outstring}}
     outStrpos : {{outStrpos}}
   </pre>
 </div>
