@@ -10,27 +10,27 @@ export class Input2Component implements OnInit {
   @ViewChild('outputview') outputview: ElementRef;
   @ViewChild('inputview') inputview: ElementRef;
   @ViewChild('cursorview') cursorView: ElementRef;
-  instring
-  outstring
-  inStrpos
-  outStrpos
+  instring: string;
+  outstring: string;
+  inStrpos: number;
+  outStrpos: number;
   constructor() { }
-  tf(str){
+  tf(str: string): string{
     return str.match(/.{1,3}/g).join("_");
   }
-  fn(str,p){
-    let strIn=this.tf(str);
-    let pOut=Number.parseInt(p*4/3 + "");
+  fn(str: string, p:number): string{
+    let strIn: string=this.tf(str);
+    let pOut: number=Number.parseInt(p*4/3 + "");
     return `<left style="box-sizing: border-box;border-right:1px solid #000">${strIn.substr(0,pOut)}</left><right>${strIn.substr(pOut)}</right>`;
     return strIn.split("").reverse().join("");
   }
-  pos(strIn,pIn,strOut){
+  pos(strIn: string, pIn: number, strOut: string): number{
     return strIn.length-pIn;
   }
-  _common(event){
+  _common(event: Event){
     //console.log(event);
-    this.instring=event.target.value;
-    this.inStrpos=event.target.selectionStart;
+    this.instring=event.target['value'];
+    this.inStrpos=event.target['selectionStart'];
     this.outstring=this.fn(this.instring,this.inStrpos);
     this.outputview.nativeElement.innerHTML=this.outstring;
     const cursor = this.outputview.nativeElement.querySelectorAll("cursor");
@@ -39,13 +39,13 @@ export class Input2Component implements OnInit {
     this.cursorView.nativeElement.style.left = `${cursor[0].offsetLeft}px`;
     this.cursorView.nativeElement.style.top = `${cursor[0].offsetTop}px`;
   }
-  inputKeyUp(event){
+  inputKeyUp(event: Event){
     this._common(event)
   }
-  inputClick(event){
+  inputClick(event: Event){
     this._common(event)
   }
-  inputSelectionStart(event){
+  inputSelectionStart(event: Event){
     this._common(event)
   }
   ngOnInit() {
