@@ -21,7 +21,7 @@ export class Input2Component implements OnInit {
   fn(str,p){
     let strIn=this.tf(str);
     let pOut=Number.parseInt(p*4/3 + "");
-    return `${strIn.substr(0,pOut)}<cursor></cursor>${strIn.substr(pOut)}`;
+    return `<left style="box-sizing: border-box;border-right:1px solid #000">${strIn.substr(0,pOut)}</left><right>${strIn.substr(pOut)}</right>`;
     return strIn.split("").reverse().join("");
   }
   pos(strIn,pIn,strOut){
